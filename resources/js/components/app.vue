@@ -4,13 +4,13 @@
 
         <v-navigation-drawer>
             <v-list>
-                <router-link v-if="token" :to="{ name: 'projects' }"  :key="$route.fullPath" >
+                <router-link v-if="token" :to="{ name: 'projects' }"   >
                     <v-list-item title="Проекты" class="border border-1"></v-list-item>
                 </router-link>
-                <router-link v-if="!token" :to="{ name: 'user.login' }"  :key="$route.fullPath" >
+                <router-link v-if="!token" :to="{ name: 'user.login' }" >
                     <v-list-item title="Войти" class="border border-1"></v-list-item>
                 </router-link>
-                <router-link v-if="!token" :to="{ name: 'user.register' }"  :key="$route.fullPath" >
+                <router-link v-if="!token" :to="{ name: 'user.register' }" >
                     <v-list-item title="Регистрация" class="border border-1"></v-list-item>
                 </router-link>
                 <v-list-item v-if="token" class="border border-1" @click="logout">
@@ -18,9 +18,9 @@
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
-        <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
+        
             <router-view></router-view>
-        </v-main>
+        
     </v-layout>
 </template>
 <script>
