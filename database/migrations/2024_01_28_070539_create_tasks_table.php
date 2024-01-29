@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
+            $table->foreignId('user_id');
+            $table->foreignId('user_working_id')->nullable();
             $table->foreignId('project_id');
             $table->char('title',100);
             $table->text('description');
             $table->boolean('isDone')->default(false);
-            $table->time('work_time')->nullable();
+            $table->boolean('isWorking')->default(false);
+            $table->int('work_time')->default('0');
             $table->timestamp('start_work_time')->nullable();
             $table->timestamps();
         });

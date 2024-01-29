@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
-
+use App\Models\Task;
 class ProjectController extends Controller
 {
     public function list() {
@@ -19,5 +19,10 @@ class ProjectController extends Controller
         $project->save();
 
         return response()->json($project,200);
+    }
+
+    public function get(Request $request) { 
+        $project = Project::find($request->id)->with('tasks.user','tasks.userWorking')->first();    
+        return response()->json($project,200); 
     }
 }

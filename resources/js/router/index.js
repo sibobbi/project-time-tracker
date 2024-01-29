@@ -5,7 +5,7 @@ import NotFound from '../components/pages/NotFound.vue'
 import Register from '../components/pages/Register.vue'
 import Login from '../components/pages/Login.vue'
 import Projects from '../components/pages/Projects.vue'
-
+import Project from '../components/pages/Project.vue'
 
 const routes = [
     {
@@ -16,6 +16,11 @@ const routes = [
         path: '/projects',
         component: Projects,
         name: 'projects'
+    },
+    {
+        path: '/project/:id',
+        component: Project, 
+        name: 'project.get'
     },
     {
         path: '/register',

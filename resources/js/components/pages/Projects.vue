@@ -12,7 +12,7 @@
                     <v-container>
                         <v-row>
                             <v-col cols="12">
-                                <v-text-field  label="Название" v-model="newProject.title"></v-text-field>
+                                <v-text-field label="Название" v-model="newProject.title"></v-text-field>
                             </v-col>
                             <v-col cols="12">
                                 <v-text-field label="Описание" v-model="newProject.description"></v-text-field>
@@ -22,8 +22,8 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="green-darken-4" variant="text" @click="createProject()" >
-                        Сохранить 
+                    <v-btn color="green-darken-4" variant="text" @click="createProject()">
+                        Сохранить
                     </v-btn>
                     <v-btn color="grey-darken-4" variant="text" @click="dialog = false">
                         Закрыть
@@ -43,19 +43,21 @@
                     Действия
                 </v-col>
             </v-row>
-            <v-row v-for="project in projects" >
+            <v-row v-for="project in projects">
                 <v-col class="border border-3 px-0" cols="4">
                     {{ project.title }}
                 </v-col>
                 <v-col class="border border-3 px-0" cols="4">
-                    {{ project.description.slice(0,100) + '...' }}
+                    {{ project.description.slice(0, 100) + '...' }}
                 </v-col>
                 <v-col class="border border-3 px-0" cols="4">
-                 <v-btn block color="blue-lighten-1">Редактировать</v-btn>
-                 <v-btn block color="orange-lighten-2" class="mt-2">Посмотреть задачи</v-btn>  
+                    <v-btn block color="blue-lighten-1">Редактировать</v-btn>
+                    <v-btn block color="orange-lighten-2" class="mt-2" @click='goGetUser(project.id)'>Посмотреть
+                        задачи</v-btn>
                 </v-col>
             </v-row>
         </v-container>
+
     </v-main>
 </template>
 <script>
@@ -74,8 +76,8 @@ export default {
         this.getProjects();
     },
     methods: {
-        createProject(){
-            axios.post('/api/projects/create',{
+        createProject() {
+            axios.post('/api/projects/create', {
                 title: this.newProject.title,
                 description: this.newProject.description
             }).then(res => {
@@ -89,6 +91,10 @@ export default {
             axios.post('/api/projects/list').then(res => {
                 this.projects = res.data;
             })
+        },
+        goGetUser(id) {
+            this.$router.push({ name: "project.get", params: {id : id} })
+            /* console.log(id); */
         }
     }
 }

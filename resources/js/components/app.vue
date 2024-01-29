@@ -18,9 +18,7 @@
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
-        
             <router-view></router-view>
-        
     </v-layout>
 </template>
 <script>

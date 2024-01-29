@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
+
     Route::post('/projects/list',[ProjectController::class,'list']); 
-    Route::post('/projects/create',[ProjectController::class,'create']); 
+    Route::post('/projects/create',[ProjectController::class,'create']);  
+    Route::post('/project/get',[ProjectController::class,'get']); 
+
+    Route::post('/task/create',[TaskController::class,'create']);
+    Route::post('/task/start',[TaskController::class,'start']);
+    Route::post('/task/pause',[TaskController::class,'pause']);
 });
