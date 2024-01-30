@@ -38,9 +38,25 @@ class TaskController extends Controller
         $task->project_id = $request->project_id;
 
         $task->save();
-
-        $task = Task::find($task->id)->with('user','userWorking')->first();
+        
+        $task = Task::where('id',$task->id)->with('user','userWorking')->first();
 
         return response()->json($task,200);
     }
+    public function setWorkUser(Request $request) {
+        $task = Task::find($request->id);
+
+        $task->user_working_id = $request->user()->id;
+        $task->save();
+
+        return response()->json($task,200);
+    }
+    public function done(Request $request) { 
+        $task = Task::find($request->id);
+
+        $task->isDone = true;
+        $task->save();
+
+        return response()->json($task,200);
+     }
 }

@@ -1,6 +1,6 @@
 <template>
     <v-main class="" style="min-height: 300px;">
-        <v-sheet width="300" class="mx-auto border border-20" >
+        <v-sheet width="300" class="mx-auto border border-20">
             <h2>Авторизация</h2>
             <v-form fast-fail @submit.prevent>
                 <v-text-field v-model="email" label="Почта"></v-text-field>

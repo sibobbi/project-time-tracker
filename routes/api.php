@@ -25,8 +25,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/projects/list',[ProjectController::class,'list']); 
     Route::post('/projects/create',[ProjectController::class,'create']);  
     Route::post('/project/get',[ProjectController::class,'get']); 
+    Route::post('/project/edit',[ProjectController::class,'edit']);
 
     Route::post('/task/create',[TaskController::class,'create']);
     Route::post('/task/start',[TaskController::class,'start']);
     Route::post('/task/pause',[TaskController::class,'pause']);
+    Route::post('/task/setWorkUser',[TaskController::class,'setWorkUser']);
+    Route::post('/task/done',[TaskController::class,'done']);
 });
