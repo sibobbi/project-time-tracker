@@ -10,7 +10,7 @@
                 </template>
                 <v-card>
                     <v-card-title>
-                        <span class="text-h5">Создать проект</span>
+                        <span class="text-h5">Создать задачу</span>
                     </v-card-title>
                     <v-card-text>
                         <v-container>
